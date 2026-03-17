@@ -7,7 +7,8 @@ export default function Hero() {
   const whatsappNumber = "919078998913"
 
   const openWhatsApp = () => {
-    window.open(`https://wa.me/${whatsappNumber}`, "_blank")
+    const message = "Hi Ashutosh, I saw your portfolio and would like to connect!"
+    window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, "_blank")
   }
 
   return (
@@ -84,6 +85,7 @@ export default function Hero() {
           {/* Contact Button */}
 
           <button
+            onClick={openWhatsApp}
             className="
             px-8 py-3 rounded-lg font-medium
             bg-gradient-to-r from-blue-500 to-cyan-400
