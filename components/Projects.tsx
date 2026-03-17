@@ -4,42 +4,60 @@ import { motion } from "framer-motion"
 
 const projects = [
   {
-    title: "Sync-Smith",
-    description: "AI-powered file synchronization platform with secure distributed storage.",
-    tech: ["Rust", "Distributed Systems", "AI"],
-    github: "#"
+    title: "Diamint",
+    description: "A diamond trading platform which will change the perspective of investment world",
+    tech: ["Django", "REST API", "Neon DB", "Render"],
+    github: "https://diamint.onrender.com/"
   },
   {
-    title: "CommandPro AI",
-    description: "Command-line AI assistant that executes and automates development workflows.",
-    tech: ["Python", "LLM", "Automation"],
-    github: "#"
+    title: "Sync-Smith",
+    description: "A software which helps developer to store their projects securely and helps them to push into their github repository in just a click.",
+    tech: ["Django", "OAuth", "GitHub"],
+    github: "https://sync-smith.onrender.com"
+  },
+  {
+    title: "ReJouice",
+    description: "A visually rich animated website inspired by Rejouice, featuring smooth scroll interactions and modern UI animations.",
+    tech: ["HTML", "CSS", "GSAP", "Locomotive JS"],
+    github: "https://github.com/AshutoshTripathy21/Personal-Assistant-AI"
   },
   {
     title: "Realtime Whiteboard",
-    description: "Collaborative drawing board supporting multiple users in real time.",
-    tech: ["WebSockets", "React", "Node"],
-    github: "#"
+    description: "A collaborative real-time whiteboard application allowing multiple users to draw and interact simultaneously.",
+    tech: ["WebSockets", "Flask", "SQL"],
+    github: "http://github.com/AshutoshTripathy21/Collab-Whiteboard"
   },
   {
     title: "Library Management System",
-    description: "Full-stack system to manage books, users, and borrowing workflows.",
-    tech: ["Python", "Flask", "PostgreSQL"],
+    description: "A full-stack application to manage books, users, and borrowing workflows with data-driven insights.",
+    tech: ["Python", "Flask", "Pandas"],
     github: "#"
   },
   {
-    title: "Product Recommender",
-    description: "Machine learning model recommending products based on user behavior.",
-    tech: ["Python", "ML", "Pandas"],
-    github: "#"
+    title: "AWS Service Recommender",
+    description: "An AWS SERVICE recommendation system developed during internship at F13 Technologie to suggest products based on user behavior.",
+    tech: ["Python", "Recommendation Algoriithm", "Django"],
+    github: "https://github.com/AshutoshTripathy21/service_recommender"
   },
   {
-    title: "GitHub Profile Finder",
-    description: "Web application that fetches and displays GitHub user data dynamically.",
-    tech: ["React", "API", "JavaScript"],
-    github: "#"
+    title: "Sundown Studio",
+    description: "An immersive animated website inspired by Sundown Studio, focusing on smooth scrolling and high-end UI interactions.",
+    tech: ["HTML", "CSS", "GSAP", "Locomotive JS"],
+    github: "https://ashutoshtripathy21.github.io/Sundown/"
+  },
+  {
+    title: "Duo Studio",
+    description: "A modern animated frontend inspired by Duo Studio, showcasing advanced scroll-based animations and interactive design.",
+    tech: ["HTML", "CSS", "GSAP", "Locomotive JS"],
+    github: "https://duo-studio-tau.vercel.app/"
+  },
+  {
+    title: "HR Management System",
+    description: "An employee management platform developed during internship at F13 Technologie, designed to streamline HR operations and workforce management.",
+    tech: ["Python", "Django", "AWS"],
+    github: "https://github.com/AshutoshTripathy21/HR-Management-System"
   }
-]
+];
 
 export default function Projects() {
 
