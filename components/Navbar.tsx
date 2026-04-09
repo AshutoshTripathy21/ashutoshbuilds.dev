@@ -19,9 +19,9 @@ export default function Navbar() {
         {/* Navigation Links */}
 
         <div className="flex gap-8 text-sm text-gray-300">
-          <Link href="#projects" className="hover:text-white transition">Projects</Link>
           <Link href="#experience" className="hover:text-white transition">Experience</Link>
           <Link href="#skills" className="hover:text-white transition">Skills</Link>
+          <Link href="#projects" className="hover:text-white transition">Projects</Link>
           <Link href="#blog" className="hover:text-white transition">Blog</Link>
           <Link href="#contact" className="hover:text-white transition">Contact</Link>
         </div>
