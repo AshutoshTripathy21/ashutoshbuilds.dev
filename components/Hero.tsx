@@ -104,7 +104,7 @@ export default function Hero() {
           {/* Resume Download */}
 
           <a
-            href="/ashutosh_tripathy.pdf"
+            href="/Ashutosh_Tripathy_Resume.pdf"
             download
             className="
             px-8 py-3 rounded-lg font-medium
