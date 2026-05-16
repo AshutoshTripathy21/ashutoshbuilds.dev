@@ -1,259 +1,324 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import emailjs from "@emailjs/browser"
 import { FaCode, FaRobot, FaCloud, FaTools } from "react-icons/fa"
 import { SiDocker, SiKubernetes, SiPython } from "react-icons/si"
 
+const services = [
+  { name: "Full Stack Web Applications", icon: FaCode, color: "#388bfd" },
+  { name: "AI / Machine Learning Projects", icon: FaRobot, color: "#a78bfa" },
+  { name: "Python Software Development", icon: SiPython, color: "#3776AB" },
+  { name: "Business Process Automation", icon: FaTools, color: "#34d399" },
+  { name: "Cloud Infrastructure Setup", icon: FaCloud, color: "#63c5ff" },
+  { name: "Docker & Kubernetes Deployment", icon: SiDocker, color: "#2496ED" },
+  { name: "DevOps CI/CD Pipeline Setup", icon: SiKubernetes, color: "#326CE5" },
+  { name: "Static Websites & Portfolios", icon: FaCode, color: "#f59e0b" },
+]
+
+type FormState = "idle" | "sending" | "success" | "error"
+
 export default function Contact() {
-
   const form = useRef<HTMLFormElement>(null)
+  const [formState, setFormState] = useState<FormState>("idle")
 
-  const sendEmail = (e: any) => {
+  const sendEmail = async (e: React.FormEvent) => {
     e.preventDefault()
+    setFormState("sending")
 
-    emailjs.sendForm(
-      "service_jm5k057",
-      "template_limxos4",
-      form.current!,
-      "-MibNqwOpQ7mD98mD"
-    )
-      .then(() => {
-        alert("Message sent successfully 🚀")
-        form.current?.reset()
-      })
-      .catch(() => {
-        alert("Failed to send message")
-      })
+    try {
+      await emailjs.sendForm(
+        "service_jm5k057",
+        "template_limxos4",
+        form.current!,
+        "-MibNqwOpQ7mD98mD"
+      )
+      setFormState("success")
+      form.current?.reset()
+      setTimeout(() => setFormState("idle"), 4000)
+    } catch {
+      setFormState("error")
+      setTimeout(() => setFormState("idle"), 3000)
+    }
   }
 
-  const services = [
-    { name: "Full Stack Web Applications", icon: FaCode },
-    { name: "AI / Machine Learning Projects", icon: FaRobot },
-    { name: "Python Software Development", icon: SiPython },
-    { name: "Business Process Automation", icon: FaTools },
-    { name: "Cloud Infrastructure Setup", icon: FaCloud },
-    { name: "Docker & Kubernetes Deployment", icon: SiDocker },
-    { name: "DevOps CI/CD Pipeline Setup", icon: SiKubernetes },
-    { name: "Static Websites & Portfolios", icon: FaCode },
-  ]
+  const inputStyle = {
+    width: "100%",
+    padding: "12px 16px",
+    borderRadius: "12px",
+    background: "rgba(5, 11, 18, 0.8)",
+    border: "1px solid rgba(56, 139, 253, 0.12)",
+    color: "var(--text-primary)",
+    fontFamily: "var(--font-body)",
+    fontSize: "0.9rem",
+    outline: "none",
+    transition: "border-color 0.3s ease, box-shadow 0.3s ease",
+  } as React.CSSProperties
 
   return (
+    <section id="contact" className="py-32 relative z-10">
 
-    <section id="contact" className="py-40 relative z-10">
+      {/* Background */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(167, 139, 250, 0.04) 0%, transparent 70%)",
+        }}
+      />
 
       <div className="max-w-6xl mx-auto px-6">
 
-        <h2 className="text-4xl font-bold text-center mb-6">
-          Contact Me
-        </h2>
+        {/* Section header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mb-16 text-center"
+        >
+          <div
+            className="inline-flex items-center gap-2 mb-4 px-3 py-1.5 rounded-full text-xs"
+            style={{
+              background: "rgba(56, 139, 253, 0.06)",
+              border: "1px solid rgba(56, 139, 253, 0.15)",
+              color: "var(--accent-cyan)",
+              fontFamily: "var(--font-mono)",
+            }}
+          >
+            <span style={{ color: "var(--text-muted)" }}>05.</span> get in touch
+          </div>
+          <h2
+            className="text-4xl font-bold mb-4"
+            style={{
+              fontFamily: "var(--font-display)",
+              color: "var(--text-primary)",
+              letterSpacing: "-0.02em",
+            }}
+          >
+            Let's Work Together
+          </h2>
+          <p
+            className="max-w-xl mx-auto text-base"
+            style={{ color: "var(--text-secondary)" }}
+          >
+            Have a project in mind? Let's discuss how I can help you build something amazing.
+          </p>
+        </motion.div>
 
-        <p className="text-gray-400 text-center mb-16">
-          Interested in working together or have a project idea?
-          Feel free to reach out.
-        </p>
+        <div className="grid md:grid-cols-2 gap-8">
 
-        {/* Responsive Layout */}
+          {/* Services panel */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="rounded-2xl p-7"
+            style={{
+              background: "rgba(8, 15, 26, 0.85)",
+              border: "1px solid rgba(56, 139, 253, 0.08)",
+              backdropFilter: "blur(20px)",
+            }}
+          >
+            <h3
+              className="text-lg font-bold mb-6"
+              style={{
+                fontFamily: "var(--font-display)",
+                color: "var(--text-primary)",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              Services I Offer
+            </h3>
 
-        <div className="flex flex-col md:grid md:grid-cols-2 gap-10">
+            <div className="space-y-3">
+              {services.map((service, i) => {
+                const Icon = service.icon
+                return (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.06 }}
+                    viewport={{ once: true }}
+                    className="group flex items-center gap-3 p-3.5 rounded-xl transition-all duration-300 cursor-default"
+                    style={{
+                      border: "1px solid rgba(56, 139, 253, 0.06)",
+                      background: "rgba(5, 11, 18, 0.5)",
+                    }}
+                    onMouseEnter={e => {
+                      const el = e.currentTarget
+                      el.style.borderColor = `${service.color}30`
+                      el.style.background = `${service.color}08`
+                    }}
+                    onMouseLeave={e => {
+                      const el = e.currentTarget
+                      el.style.borderColor = "rgba(56, 139, 253, 0.06)"
+                      el.style.background = "rgba(5, 11, 18, 0.5)"
+                    }}
+                  >
+                    <div
+                      className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+                      style={{
+                        background: `${service.color}15`,
+                        border: `1px solid ${service.color}25`,
+                      }}
+                    >
+                      <Icon size={15} style={{ color: service.color }} />
+                    </div>
+                    <span
+                      className="text-sm"
+                      style={{
+                        color: "var(--text-secondary)",
+                        fontFamily: "var(--font-body)",
+                      }}
+                    >
+                      {service.name}
+                    </span>
+                    <div
+                      className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity"
+                      style={{ color: service.color }}
+                    >
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                      </svg>
+                    </div>
+                  </motion.div>
+                )
+              })}
+            </div>
+          </motion.div>
 
-          {/* CONTACT FORM FIRST (MOBILE) */}
-
+          {/* Contact form */}
           <motion.form
             ref={form}
             onSubmit={sendEmail}
-            initial={{ opacity: 0, x: 40 }}
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="
-  order-1 md:order-2
-  bg-[#020617]/80
-  backdrop-blur-xl
-  border border-blue-400/30
-  rounded-xl
-  p-10
-  space-y-6
-  shadow-xl shadow-blue-500/10
-  "
+            viewport={{ once: true }}
+            className="rounded-2xl p-7 flex flex-col gap-5"
+            style={{
+              background: "rgba(8, 15, 26, 0.85)",
+              border: "1px solid rgba(56, 139, 253, 0.08)",
+              backdropFilter: "blur(20px)",
+            }}
           >
-
-            <h3 className="text-2xl font-semibold text-blue-300 mb-4">
+            <h3
+              className="text-lg font-bold"
+              style={{
+                fontFamily: "var(--font-display)",
+                color: "var(--text-primary)",
+                letterSpacing: "-0.01em",
+              }}
+            >
               Send a Message
             </h3>
 
-            {/* Name */}
+            <div className="flex flex-col gap-1.5">
+              <label
+                className="text-xs"
+                style={{ color: "var(--text-muted)", fontFamily: "var(--font-mono)" }}
+              >
+                name
+              </label>
+              <input
+                type="text"
+                name="name"
+                placeholder="Your full name"
+                required
+                style={inputStyle}
+                onFocus={e => {
+                  e.target.style.borderColor = "rgba(56, 139, 253, 0.35)"
+                  e.target.style.boxShadow = "0 0 0 3px rgba(56, 139, 253, 0.05)"
+                }}
+                onBlur={e => {
+                  e.target.style.borderColor = "rgba(56, 139, 253, 0.12)"
+                  e.target.style.boxShadow = "none"
+                }}
+              />
+            </div>
 
-            <input
-              type="text"
-              name="name"
-              placeholder="Your Name"
-              required
-              className="
-    w-full p-3 rounded-lg
-    bg-[#020617]/60
-    border border-blue-500/20
-    text-gray-200
-    placeholder-gray-500
-    transition-all duration-300
-    focus:outline-none
-    focus:border-cyan-400
-    focus:ring-1 focus:ring-cyan-400/40
-    "
-            />
+            <div className="flex flex-col gap-1.5">
+              <label
+                className="text-xs"
+                style={{ color: "var(--text-muted)", fontFamily: "var(--font-mono)" }}
+              >
+                email
+              </label>
+              <input
+                type="email"
+                name="email"
+                placeholder="your@email.com"
+                required
+                style={inputStyle}
+                onFocus={e => {
+                  e.target.style.borderColor = "rgba(56, 139, 253, 0.35)"
+                  e.target.style.boxShadow = "0 0 0 3px rgba(56, 139, 253, 0.05)"
+                }}
+                onBlur={e => {
+                  e.target.style.borderColor = "rgba(56, 139, 253, 0.12)"
+                  e.target.style.boxShadow = "none"
+                }}
+              />
+            </div>
 
-            {/* Email */}
-
-            <input
-              type="email"
-              name="email"
-              placeholder="Your Email"
-              required
-              className="
-    w-full p-3 rounded-lg
-    bg-[#020617]/60
-    border border-blue-500/20
-    text-gray-200
-    placeholder-gray-500
-    transition-all duration-300
-    focus:outline-none
-    focus:border-cyan-400
-    focus:ring-1 focus:ring-cyan-400/40
-    "
-            />
-
-            {/* Message */}
-
-            <textarea
-              name="message"
-              placeholder="Mention your query..."
-              rows={4}
-              required
-              className="
-    w-full p-3 rounded-lg
-    bg-[#020617]/60
-    border border-blue-500/20
-    text-gray-200
-    placeholder-gray-500
-    transition-all duration-300
-    focus:outline-none
-    focus:border-cyan-400
-    focus:ring-1 focus:ring-cyan-400/40
-    "
-            />
-
-            {/* Send Button */}
+            <div className="flex flex-col gap-1.5">
+              <label
+                className="text-xs"
+                style={{ color: "var(--text-muted)", fontFamily: "var(--font-mono)" }}
+              >
+                message
+              </label>
+              <textarea
+                name="message"
+                placeholder="Describe your project or idea..."
+                rows={5}
+                required
+                style={{ ...inputStyle, resize: "none" }}
+                onFocus={e => {
+                  e.target.style.borderColor = "rgba(56, 139, 253, 0.35)"
+                  e.target.style.boxShadow = "0 0 0 3px rgba(56, 139, 253, 0.05)"
+                }}
+                onBlur={e => {
+                  e.target.style.borderColor = "rgba(56, 139, 253, 0.12)"
+                  e.target.style.boxShadow = "none"
+                }}
+              />
+            </div>
 
             <button
               type="submit"
-              className="
-    w-full
-    py-3
-    rounded-lg
-    font-medium
-    bg-gradient-to-r from-blue-930 to-cyan-600
-    text-bold-black
-    shadow-lg shadow-blue-500/20
-    transition-all duration-300
-    hover:scale-[1.03]
-    hover:shadow-cyan-400/40
-    hover:shadow-xl
-    "
+              disabled={formState === "sending"}
+              className="w-full py-3.5 rounded-xl font-semibold text-sm transition-all duration-300 hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed"
+              style={{
+                background: formState === "success"
+                  ? "linear-gradient(135deg, #34d399, #10b981)"
+                  : formState === "error"
+                  ? "linear-gradient(135deg, #f87171, #ef4444)"
+                  : "linear-gradient(135deg, #388bfd, #63c5ff)",
+                color: "#020408",
+                fontFamily: "var(--font-body)",
+                boxShadow: "0 8px 32px rgba(56, 139, 253, 0.25)",
+                letterSpacing: "0.02em",
+              }}
             >
-              Send Message
+              {formState === "sending" && "Sending..."}
+              {formState === "success" && "✓ Message sent!"}
+              {formState === "error" && "✗ Failed — try again"}
+              {formState === "idle" && "Send Message →"}
             </button>
 
+            <p
+              className="text-center text-xs"
+              style={{ color: "var(--text-muted)", fontFamily: "var(--font-mono)" }}
+            >
+              Usually responds within 24 hours
+            </p>
           </motion.form>
-
-          {/* SERVICES */}
-
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="
-  order-2 md:order-1
-  bg-[#020617]/80
-  backdrop-blur-xl
-  border border-blue-400/30
-  rounded-xl
-  p-8
-  shadow-xl shadow-blue-500/10
-  "
-          >
-
-            <h3 className="text-2xl font-semibold mb-8 text-blue-300">
-              Services I Provide
-            </h3>
-
-            <ul className="space-y-4">
-
-              {services.map((service, index) => {
-
-                const Icon = service.icon
-
-                return (
-
-                  <li
-                    key={index}
-                    className="
-          group
-          flex items-center gap-4
-          p-4 rounded-lg
-          border border-blue-500/20
-          bg-[#020617]/60
-          transition-all duration-300
-          hover:border-cyan-400/60
-          hover:shadow-lg
-          hover:shadow-cyan-400/10
-          hover:-translate-y-1
-          "
-                  >
-
-                    {/* Icon */}
-
-                    <Icon
-                      className="
-            text-cyan-400
-            text-xl
-            transition
-            group-hover:scale-110
-            group-hover:text-cyan-300
-            "
-                    />
-
-                    {/* Text */}
-
-                    <span className="text-gray-300 group-hover:text-white transition">
-                      {service.name}
-                    </span>
-
-                    {/* Hover line */}
-
-                    <span className="
-          ml-auto
-          w-0 h-[2px]
-          bg-gradient-to-r from-cyan-400 to-blue-400
-          transition-all duration-300
-          group-hover:w-8
-          "></span>
-
-                  </li>
-
-                )
-
-              })}
-
-            </ul>
-
-          </motion.div>
-
         </div>
-
       </div>
-
     </section>
-
   )
-
 }

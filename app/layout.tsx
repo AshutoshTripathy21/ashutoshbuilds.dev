@@ -1,29 +1,15 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import CloudBackground from "@/components/CloudBackground"
 import SmoothScroll from "@/components/SmoothScroll"
-
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: {
     default: "Ashutosh Tripathy | Software Engineer",
     template: "%s | Ashutosh Tripathy",
   },
-
   description:
     "Ashutosh Tripathy – Software Engineer specializing in Backend Development, Cloud Engineering, DevOps, Automation, and AI-powered systems.",
-
   keywords: [
     "Ashutosh Tripathy",
     "Software Engineer",
@@ -37,14 +23,12 @@ export const metadata: Metadata = {
     "Flask Developer",
     "AWS Engineer",
     "Freelancer",
-    "uIPath Developer",
+    "UiPath Developer",
     "RPA Developer",
     "Power Automate Developer",
   ],
-
   authors: [{ name: "Ashutosh Tripathy" }],
   creator: "Ashutosh Tripathy",
-
   openGraph: {
     title: "Ashutosh Tripathy | Software Engineer Portfolio",
     description:
@@ -60,14 +44,12 @@ export const metadata: Metadata = {
     ],
     type: "website",
   },
-
   twitter: {
     card: "summary_large_image",
     title: "Ashutosh Tripathy | Software Engineer",
     description:
       "Backend, Cloud & DevOps Engineer building scalable systems and automation tools.",
   },
-
   robots: {
     index: true,
     follow: true,
@@ -80,14 +62,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="antialiased" suppressHydrationWarning>
+        <div className="noise-overlay" />
         <CloudBackground />
         <SmoothScroll />
         {children}
-        
       </body>
     </html>
   );
