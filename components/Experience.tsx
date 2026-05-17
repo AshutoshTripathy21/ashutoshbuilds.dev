@@ -52,7 +52,7 @@ export default function Experience() {
         }}
       />
 
-      <div className="max-w-5xl mx-auto px-6 relative z-10">
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
 
         {/* Section header */}
         <motion.div
@@ -143,11 +143,16 @@ export default function Experience() {
                     </div>
 
                     {/* Points */}
-                    <div
-                      className="overflow-hidden transition-all duration-500 ease-in-out"
-                      style={{ maxHeight: isActive ? "400px" : "0px", opacity: isActive ? 1 : 0 }}
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ 
+                        height: isActive ? "auto" : 0, 
+                        opacity: isActive ? 1 : 0 
+                      }}
+                      transition={{ duration: 0.4, ease: "easeInOut" }}
+                      className="overflow-hidden"
                     >
-                      <ul className="mb-5 space-y-2.5">
+                      <ul className="mb-5 space-y-2.5 pt-4">
                         {exp.points.map((p, i) => (
                           <li
                             key={i}
@@ -159,7 +164,7 @@ export default function Experience() {
                         ))}
                       </ul>
 
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-2 pb-2">
                         {exp.tech.map((t, i) => (
                           <span
                             key={i}
@@ -169,7 +174,7 @@ export default function Experience() {
                           </span>
                         ))}
                       </div>
-                    </div>
+                    </motion.div>
 
                     {/* Expand hint */}
                     <div className="mt-4 text-xs flex items-center gap-1 text-text-muted font-mono">

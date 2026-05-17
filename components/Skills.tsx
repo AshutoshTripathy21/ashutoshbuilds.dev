@@ -156,19 +156,12 @@ export default function Skills() {
                         delay: domainIdx * 0.05 + skillIdx * 0.04,
                       }}
                       viewport={{ once: true }}
-                      className="group flex flex-col items-center gap-3 p-5 rounded-2xl cursor-default bg-bg-glass border border-border-subtle backdrop-blur-md transition-all duration-300 hover:bg-bg-deep"
+                      className="group flex flex-col items-center gap-3 p-5 rounded-2xl cursor-default bg-bg-glass border border-border-subtle backdrop-blur-md transition-all duration-300 hover:bg-bg-deep hover:border-[var(--hover-border)] hover:shadow-[var(--hover-shadow)]"
                       style={{
                         '--hover-border': `color-mix(in srgb, var(--domain-color) 40%, transparent)`,
                         '--hover-shadow': `0 8px 24px color-mix(in srgb, var(--domain-color) 15%, transparent)`,
                       } as React.CSSProperties}
                     >
-                      {/* CSS hover logic via classes and dynamic variables */}
-                      <style jsx>{`
-                        div:hover {
-                          border-color: var(--hover-border);
-                          box-shadow: var(--hover-shadow);
-                        }
-                      `}</style>
                       
                       <Icon
                         size={32}

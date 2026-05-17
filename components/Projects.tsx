@@ -115,7 +115,7 @@ export default function Projects() {
         }}
       />
 
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-6">
 
         {/* Section header */}
         <motion.div
@@ -144,6 +144,7 @@ export default function Projects() {
             <button
               key={cat}
               onClick={() => setFilter(cat)}
+              suppressHydrationWarning
               className={`px-4 py-1.5 rounded-full text-sm transition-all duration-300 font-sans ${
                 filter === cat
                   ? "bg-gradient-to-br from-accent-primary to-accent-cyan text-bg-void font-semibold border-transparent"
