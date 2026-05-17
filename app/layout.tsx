@@ -79,7 +79,7 @@ export default function RootLayout({
               "@type": "Person",
               "name": "Ashutosh Tripathy",
               "url": "https://ashutoshbuilds-dev.vercel.app/",
-              "image": "https://ashutoshbuilds-dev.vercel.app/ashutosh-tripathy.png",
+              "image": "https://ashutoshbuilds-dev.vercel.app/ashutosh-tripathy.jpg",
               "jobTitle": "Software Engineer & RPA Developer",
               "worksFor": {
                 "@type": "Organization",
