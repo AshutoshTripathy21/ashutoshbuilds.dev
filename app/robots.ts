@@ -4,6 +4,6 @@ export default function robots() {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://ashutoshbuilds-dev.onrender.com/sitemap.xml",
+    sitemap: "https://ashutoshbuilds-dev.vercel.app/sitemap.xml",
   };
 }

@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     title: "Ashutosh Tripathy | Software Engineer Portfolio",
     description:
       "Backend, Cloud & DevOps Engineer building scalable systems, automation tools, and modern AI applications.",
-    url: "https://ashutoshbuilds-dev.onrender.com/",
+    url: "https://ashutoshbuilds-dev.vercel.app/",
     siteName: "Ashutosh Portfolio",
     images: [
       {
@@ -78,8 +78,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               "name": "Ashutosh Tripathy",
-              "url": "https://ashutoshbuilds-dev.onrender.com/",
-              "image": "https://ashutoshbuilds-dev.onrender.com/icon.png",
+              "url": "https://ashutoshbuilds-dev.vercel.app/",
+              "image": "https://ashutoshbuilds-dev.vercel.app/icon.png",
               "jobTitle": "Software Engineer & RPA Developer",
               "worksFor": {
                 "@type": "Organization",
