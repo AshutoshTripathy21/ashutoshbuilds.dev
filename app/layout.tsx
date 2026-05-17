@@ -70,6 +70,43 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap"
           rel="stylesheet"
         />
+        {/* JSON-LD Person Schema Structured Data for Google SEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": "Ashutosh Tripathy",
+              "url": "https://ashutoshbuilds-dev.onrender.com/",
+              "image": "https://ashutoshbuilds-dev.onrender.com/icon.png",
+              "jobTitle": "Software Engineer & RPA Developer",
+              "worksFor": {
+                "@type": "Organization",
+                "name": "Cognizant"
+              },
+              "description": "Ashutosh Tripathy – Software Engineer specializing in Backend Development, Cloud Engineering, DevOps, Automation, and AI-powered systems.",
+              "sameAs": [
+                "https://github.com/AshutoshTripathy21",
+                "https://wa.me/919078998913"
+              ],
+              "knowsAbout": [
+                "Python",
+                "C#",
+                "AWS",
+                "GCP",
+                "Docker",
+                "Kubernetes",
+                "RPA",
+                "Power Automate Desktop",
+                "VBScript",
+                "SAP Automation",
+                "DevOps",
+                "CI/CD"
+              ]
+            })
+          }}
+        />
       </head>
       <body className="antialiased" suppressHydrationWarning>
         <div className="noise-overlay" />
