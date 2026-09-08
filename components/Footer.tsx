@@ -48,7 +48,7 @@ export default function Footer() {
               color: "var(--text-primary)",
             }}
           >
-            Ashutosh<span style={{ color: "var(--accent-cyan)" }}>.dev</span>
+            AshutoshBuilds<span style={{ color: "var(--accent-cyan)" }}>.dev</span>
           </h3>
           <p
             className="text-sm"

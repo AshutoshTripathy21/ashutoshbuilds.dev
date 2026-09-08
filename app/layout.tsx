@@ -4,6 +4,7 @@ import CloudBackground from "@/components/CloudBackground"
 import SmoothScroll from "@/components/SmoothScroll"
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://ashutoshbuilds-dev.vercel.app"),
   title: {
     default: "Ashutosh Tripathy | Software Engineer",
     template: "%s | Ashutosh Tripathy",

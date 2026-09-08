@@ -7,6 +7,8 @@ const navLinks = [
   { href: "#experience", label: "Experience" },
   { href: "#skills", label: "Skills" },
   { href: "#projects", label: "Projects" },
+  { href: "#product", label: "Product" },
+  { href: "#activity", label: "Activity" },
   { href: "#contact", label: "Contact" },
 ]
 
@@ -52,7 +54,7 @@ export default function Navbar() {
             AT
           </div>
           <span className="text-sm font-semibold tracking-wide transition-colors duration-300 font-display text-text-primary">
-            Ashutosh<span className="text-accent-cyan">.dev</span>
+            AshutoshBuilds<span className="text-accent-cyan">.dev</span>
           </span>
         </Link>
 

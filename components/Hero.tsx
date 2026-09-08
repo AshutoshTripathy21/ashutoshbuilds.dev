@@ -2,20 +2,30 @@
 
 import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
+import { FaAws, FaDocker, FaPython } from "react-icons/fa"
+import { SiKubernetes, SiTypescript } from "react-icons/si"
 
 const roles = [
-  "Backend Engineer",
-  "Cloud Architect",
+  "Software Engineer",
+  "Backend Developer",
+  "Cloud Engineer",
   "DevOps Specialist",
-  "Automation Expert",
-  "RPA Developer",
+  "RPA & Automation Expert",
 ]
 
 const stats = [
   { value: "2+", label: "Years Experience" },
   { value: "20+", label: "Projects Built" },
-  { value: "5+", label: "Tech Stacks" },
-  { value: "10+", label: "Live Deployments" },
+  { value: "5+", label: "Core Tech Stacks" },
+  { value: "10+", label: "Cloud Deployments" },
+]
+
+const techBadges = [
+  { name: "AWS Cloud", icon: FaAws, color: "#FF9900" },
+  { name: "Python", icon: FaPython, color: "#3776AB" },
+  { name: "Docker", icon: FaDocker, color: "#2496ED" },
+  { name: "Kubernetes", icon: SiKubernetes, color: "#326CE5" },
+  { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
 ]
 
 export default function Hero() {
@@ -39,7 +49,7 @@ export default function Hero() {
       setIsDeleting(false)
       setRoleIndex((prev) => (prev + 1) % roles.length)
     } else {
-      const speed = isDeleting ? 40 : 80
+      const speed = isDeleting ? 35 : 70
       timeout = setTimeout(() => {
         setDisplayText(isDeleting
           ? current.slice(0, displayText.length - 1)
@@ -52,18 +62,16 @@ export default function Hero() {
   }, [displayText, isDeleting, roleIndex])
 
   return (
-    <section
-      className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20"
-    >
-      {/* Radial gradient background */}
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-24 pb-16">
+      {/* Radial gradient background aura */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse 80% 60% at 50% -10%, var(--border-subtle) 0%, transparent 70%)",
+          background: "radial-gradient(ellipse 80% 60% at 50% -10%, rgba(56, 139, 253, 0.12) 0%, transparent 70%)",
         }}
       />
 
-      {/* Grid pattern */}
+      {/* Grid pattern overlay */}
       <div
         className="absolute inset-0 pointer-events-none opacity-20"
         style={{
@@ -83,18 +91,18 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 mb-8 px-4 py-2 rounded-full text-xs md:text-sm font-mono text-accent-emerald bg-accent-emerald/5 border border-accent-emerald/20"
+          className="inline-flex items-center gap-2 mb-8 px-4 py-2 rounded-full text-xs md:text-sm font-mono text-accent-emerald bg-accent-emerald/5 border border-accent-emerald/20 shadow-[0_0_20px_rgba(52,211,153,0.1)]"
         >
           <span
-            className="w-1.5 h-1.5 rounded-full bg-accent-emerald animate-pulse"
+            className="w-2 h-2 rounded-full bg-accent-emerald animate-pulse"
             style={{ boxShadow: "0 0 8px var(--accent-emerald)" }}
           />
-          Available for freelance projects
+          Available for freelance & full-time opportunities
         </motion.div>
 
-        {/* Name */}
+        {/* Name Title */}
         <motion.h1
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
           className="mb-4 leading-none font-display font-extrabold text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] tracking-tight text-text-primary"
@@ -105,15 +113,36 @@ export default function Hero() {
           </span>
         </motion.h1>
 
-        {/* Typewriter role */}
+        {/* Floating tech badges */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.6 }}
-          className="mb-6 flex items-center justify-center gap-2 font-mono text-lg md:text-xl text-accent-cyan"
+          className="flex flex-wrap items-center justify-center gap-2 mb-8"
+        >
+          {techBadges.map((badge, idx) => {
+            const Icon = badge.icon
+            return (
+              <span
+                key={idx}
+                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono bg-bg-glass border border-border-subtle backdrop-blur-md text-text-secondary transition-all hover:scale-105 hover:border-accent-cyan/30"
+              >
+                <Icon style={{ color: badge.color }} />
+                {badge.name}
+              </span>
+            )
+          })}
+        </motion.div>
+
+        {/* Typewriter role */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4, duration: 0.6 }}
+          className="mb-6 flex items-center justify-center gap-2 font-mono text-lg md:text-2xl text-accent-cyan"
         >
           <span className="text-text-muted">$</span>
-          <span>{displayText}</span>
+          <span className="font-semibold">{displayText}</span>
           <span className="w-0.5 h-6 rounded-full inline-block bg-accent-cyan animate-[blink_1s_step-end_infinite]" />
         </motion.div>
 
@@ -122,7 +151,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.6 }}
-          className="max-w-2xl mx-auto mb-10 text-base md:text-lg leading-relaxed text-text-secondary"
+          className="max-w-2xl mx-auto mb-10 text-base md:text-lg leading-relaxed text-text-secondary font-sans"
         >
           I architect scalable backend systems, design robust cloud infrastructure,
           and eliminate manual workflows through intelligent automation. Passionate
@@ -139,7 +168,7 @@ export default function Hero() {
           <button
             onClick={openWhatsApp}
             suppressHydrationWarning
-            className="group relative px-8 py-3.5 rounded-xl text-sm font-semibold font-sans overflow-hidden transition-all duration-300 hover:scale-105 bg-gradient-to-br from-accent-primary to-accent-cyan text-bg-void shadow-[0_8px_32px_rgba(56,139,253,0.3)] tracking-wide"
+            className="group relative px-8 py-3.5 rounded-xl text-sm font-semibold font-sans overflow-hidden transition-all duration-300 hover:scale-105 bg-gradient-to-br from-accent-primary to-accent-cyan text-bg-void shadow-[0_8px_32px_rgba(56,139,253,0.35)] tracking-wide"
           >
             <span className="relative z-10 flex items-center gap-2">
               Let's Connect
@@ -152,13 +181,13 @@ export default function Hero() {
           <a
             href="/Ashutosh_Tripathy_Resume.pdf"
             download
-            className="group px-8 py-3.5 rounded-xl text-sm font-semibold font-sans transition-all duration-300 hover:scale-105 bg-accent-primary/5 border border-accent-primary/20 text-accent-cyan tracking-wide"
+            className="group px-8 py-3.5 rounded-xl text-sm font-semibold font-sans transition-all duration-300 hover:scale-105 bg-accent-primary/5 border border-accent-primary/20 text-accent-cyan tracking-wide hover:bg-accent-primary/10"
           >
-            Download Resume
+            Download Resume ↗
           </a>
         </motion.div>
 
-        {/* Stats */}
+        {/* Stats Grid */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -171,12 +200,12 @@ export default function Hero() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 1.0 + i * 0.1 }}
-              className="py-4 px-3 rounded-xl text-center bg-bg-glass border border-border-subtle backdrop-blur-md"
+              className="py-4 px-3 rounded-2xl text-center bg-bg-glass border border-border-subtle backdrop-blur-md hover:border-accent-cyan/30 transition-all duration-300"
             >
-              <div className="text-2xl font-bold mb-1 font-display text-transparent bg-clip-text bg-gradient-to-br from-accent-primary to-accent-cyan">
+              <div className="text-2xl md:text-3xl font-bold mb-1 font-display text-transparent bg-clip-text bg-gradient-to-br from-accent-primary to-accent-cyan">
                 {stat.value}
               </div>
-              <div className="text-xs text-text-muted font-sans tracking-wider uppercase">
+              <div className="text-[0.7rem] md:text-xs text-text-muted font-sans tracking-wider uppercase">
                 {stat.label}
               </div>
             </motion.div>
